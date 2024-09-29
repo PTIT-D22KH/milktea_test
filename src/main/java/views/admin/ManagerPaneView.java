@@ -10,12 +10,12 @@ import models.Model;
  *
  * @author P51
  */
-public abstract class ManagerPanelView<T extends Model> extends javax.swing.JPanel {
+public abstract class ManagerPaneView<T extends Model> extends javax.swing.JPanel {
 
     /**
      * Creates new form ManagerPanelView
      */
-    public ManagerPanelView() {
+    public ManagerPaneView() {
         initComponents();
     }
 
