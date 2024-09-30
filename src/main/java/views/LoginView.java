@@ -4,6 +4,13 @@
  */
 package views;
 
+import javax.swing.JButton;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
+import utils.ErrorPopup;
+
 /**
  *
  * @author P51
@@ -16,7 +23,41 @@ public class LoginView extends javax.swing.JFrame {
     public LoginView() {
         initComponents();
         setLocationRelativeTo(null);
-        this.getRootPane().setDefaultButton(btnLogin);
+        this.getRootPane().setDefaultButton(loginButton);
+    }
+    
+    public void showError(String message) {
+        ErrorPopup.show(new Exception(message));
+    }
+
+    public void showError(Exception e) {
+        ErrorPopup.show(e);
+    }
+
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(this, message);
+    }
+
+    public JButton getLoginButton() {
+        return loginButton;
+    }
+
+    
+
+    public JLabel getForgotPassLabel() {
+        return forgotPassLabel;
+    }
+
+    public JPasswordField getPasswordField() {
+        return passwordField;
+    }
+
+    public JLabel getRegisterLabel() {
+        return registerLabel;
+    }
+
+    public JTextField getUsernameTextField() {
+        return usernameTextField;
     }
 
     
@@ -37,7 +78,7 @@ public class LoginView extends javax.swing.JFrame {
         passwordLabel = new javax.swing.JLabel();
         forgotPassLabel = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
-        btnLogin = new javax.swing.JButton();
+        loginButton = new javax.swing.JButton();
         registerLabel = new javax.swing.JLabel();
         passwordField = new javax.swing.JPasswordField();
 
@@ -73,7 +114,7 @@ public class LoginView extends javax.swing.JFrame {
         forgotPassLabel.setBackground(new java.awt.Color(23, 249, 89));
         forgotPassLabel.setText("Quên mật khẩu?");
 
-        btnLogin.setText("Đăng Nhập");
+        loginButton.setText("Đăng Nhập");
 
         registerLabel.setForeground(new java.awt.Color(51, 153, 255));
         registerLabel.setText("Chưa có tài khoản ? Đăng ký");
@@ -86,7 +127,7 @@ public class LoginView extends javax.swing.JFrame {
                 .addContainerGap(132, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
-                        .addComponent(btnLogin)
+                        .addComponent(loginButton)
                         .addGap(153, 153, 153))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
                         .addComponent(registerLabel, javax.swing.GroupLayout.PREFERRED_SIZE, 158, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -96,7 +137,7 @@ public class LoginView extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap(22, Short.MAX_VALUE)
-                .addComponent(btnLogin)
+                .addComponent(loginButton)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(registerLabel))
         );
@@ -195,11 +236,11 @@ public class LoginView extends javax.swing.JFrame {
 //    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnLogin;
     private javax.swing.JLabel forgotPassLabel;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JButton loginButton;
     private javax.swing.JLabel loginTitle;
     private javax.swing.JPasswordField passwordField;
     private javax.swing.JLabel passwordLabel;

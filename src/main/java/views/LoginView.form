@@ -163,7 +163,7 @@
                       <EmptySpace pref="132" max="32767" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="1" attributes="0">
-                              <Component id="btnLogin" min="-2" max="-2" attributes="0"/>
+                              <Component id="loginButton" min="-2" max="-2" attributes="0"/>
                               <EmptySpace min="-2" pref="153" max="-2" attributes="0"/>
                           </Group>
                           <Group type="102" alignment="1" attributes="0">
@@ -178,7 +178,7 @@
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace pref="22" max="32767" attributes="0"/>
-                      <Component id="btnLogin" min="-2" max="-2" attributes="0"/>
+                      <Component id="loginButton" min="-2" max="-2" attributes="0"/>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Component id="registerLabel" min="-2" max="-2" attributes="0"/>
                   </Group>
@@ -186,7 +186,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JButton" name="btnLogin">
+            <Component class="javax.swing.JButton" name="loginButton">
               <Properties>
                 <Property name="text" type="java.lang.String" value="&#x110;&#x103;ng Nh&#x1ead;p"/>
               </Properties>

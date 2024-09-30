@@ -4,7 +4,9 @@
  */
 package main;
 
+import controllers.LoginController;
 import dao.CustomerDao;
+import dao.EmployeeDao;
 import utils.DatabaseConnector;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -28,10 +30,13 @@ public class Main {
         } catch (Exception ex) {
             System.err.println("Set up UI Theme failed!");
         }
-        LoginView loginView = new LoginView();
-        loginView.setVisible(true);
-        RegisterView registerView = new RegisterView();
-        registerView.setVisible(true);
+        LoginController controller = new LoginController(new LoginView());
+//        EmployeeDao e = new EmployeeDao();
+//        System.out.println(e.getById(7));
+//        LoginView loginView = new LoginView();
+//        loginView.setVisible(true);
+//        RegisterView registerView = new RegisterView();
+//        registerView.setVisible(true);
         
     }
 }
