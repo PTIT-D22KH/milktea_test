@@ -25,7 +25,7 @@ public class SessionDao extends Dao<Session> {
         ResultSet rs = statement.executeQuery(query);
         while (rs.next()) {
             Session session = Session.getFromResultSet(rs);
-            session.setEmployee(employeeDao.getById(session.getIdEmployee()));
+            session.setEmployee(employeeDao.getById(session.getEmployeeId()));
             sessions.add(session);
         }
         return sessions;
@@ -38,7 +38,7 @@ public class SessionDao extends Dao<Session> {
         ResultSet rs = statement.executeQuery(query);
         if (rs.next()) {
             Session session = Session.getFromResultSet(rs);
-            session.setEmployee(employeeDao.getById(session.getIdEmployee()));
+            session.setEmployee(employeeDao.getById(session.getEmployeeId()));
             return session;
         }
         return null;
@@ -47,11 +47,11 @@ public class SessionDao extends Dao<Session> {
     public ArrayList<Session> getSession(int id) throws SQLException {
         ArrayList<Session> sessions = new ArrayList<>();
         Statement statement = conn.createStatement();
-        String query = "SELECT * FROM `session` WHERE `idEmployee` = " + id + " ORDER BY `session`.`startTime` DESC";
+        String query = "SELECT * FROM `session` WHERE `employeeId` = " + id + " ORDER BY `session`.`startTime` DESC";
         ResultSet rs = statement.executeQuery(query);
         while (rs.next()) {
             Session session = Session.getFromResultSet(rs);
-            session.setEmployee(employeeDao.getById(session.getIdEmployee()));
+            session.setEmployee(employeeDao.getById(session.getEmployeeId()));
             sessions.add(session);
         }
         return sessions;
@@ -62,10 +62,10 @@ public class SessionDao extends Dao<Session> {
         if (t == null) {
             throw new SQLException("Shipment rỗng");
         }
-        String query = "INSERT INTO `session` (`idEmployee`, `startTime`, `endTime` , `message`) VALUES (?, ?, ?, ?)";
+        String query = "INSERT INTO `session` (`employeeId`, `startTime`, `endTime` , `message`) VALUES (?, ?, ?, ?)";
 
         PreparedStatement stmt = conn.prepareStatement(query);
-        stmt.setInt(1, t.getIdEmployee());
+        stmt.setInt(1, t.getEmployeeId());
         stmt.setTimestamp(2, t.getStartTime());
         stmt.setTimestamp(3, t.getEndTime());
         stmt.setNString(4, t.getMessage());
@@ -99,12 +99,12 @@ public class SessionDao extends Dao<Session> {
 
     public Session getLast(int idEmployee) throws SQLException {
         Statement statement = conn.createStatement();
-        String query = "SELECT * FROM `session` WHERE `idEmployee` = " + idEmployee
-                + " ORDER BY `id` DESC LIMIT 1";
+        String query = "SELECT * FROM `session` WHERE `employeeId` = " + idEmployee 
+                + " ORDER BY `employeeId` DESC LIMIT 1";
         ResultSet rs = statement.executeQuery(query);
         if (rs.next()) {
             Session session = Session.getFromResultSet(rs);
-            session.setEmployee(employeeDao.getById(session.getIdEmployee()));
+            session.setEmployee(employeeDao.getById(session.getEmployeeId()));
             return session;
         }
         return null;
@@ -120,7 +120,7 @@ public class SessionDao extends Dao<Session> {
         ResultSet rs = statement.executeQuery();
         while (rs.next()) {
             Session session = Session.getFromResultSet(rs);
-            session.setEmployee(employeeDao.getById(session.getIdEmployee()));
+            session.setEmployee(employeeDao.getById(session.getEmployeeId()));
             sessions.add(session);
         }
         return sessions;

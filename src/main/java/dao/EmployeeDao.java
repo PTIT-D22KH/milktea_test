@@ -62,7 +62,7 @@ public class EmployeeDao extends Dao<Employee> {
         if (t == null) {
             throw new SQLException("Employee rong");
         }
-        String query = "UPDATE `employee` SET `username` = ?, `password` = ?, `name` = ?, `phoneNumber` = ?, `permission` = ?, `salary` = ? WHERE `id` = ?";
+        String query = "UPDATE `employee` SET `username` = ?, `password` = ?, `name` = ?, `phoneNumber` = ?, `permission` = ?, `salary` = ? WHERE `employeeId` = ?";
         PreparedStatement stmt = conn.prepareStatement(query);
         stmt.setNString(1, t.getUsername());
         stmt.setNString(2, t.getPassword());
@@ -76,14 +76,14 @@ public class EmployeeDao extends Dao<Employee> {
 
     @Override
     public void delete(Employee t) throws SQLException {
-        PreparedStatement stmt = conn.prepareStatement("DELETE FROM `employee` WHERE `employee`.`id` = ?");
+        PreparedStatement stmt = conn.prepareStatement("DELETE FROM `employee` WHERE `employee`.`employeeId` = ?");
         stmt.setInt(1, t.getEmployeeId());
         stmt.executeUpdate();
     }
 
     @Override
     public void deleteById(int id) throws SQLException {
-        PreparedStatement stmt = conn.prepareStatement("DELETE FROM `employee` WHERE `employee`.`id` = ?");
+        PreparedStatement stmt = conn.prepareStatement("DELETE FROM `employee` WHERE `employee`.`employeeId` = ?");
         stmt.setInt(1, id);
         stmt.executeUpdate();
     }

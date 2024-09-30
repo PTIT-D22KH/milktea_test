@@ -11,7 +11,7 @@ import java.sql.Timestamp;
  */
 public class Session {
 
-    private int id, idEmployee;
+    private int id, employeeId;
     private Timestamp startTime, endTime;
     private Employee employee;
     private String message;
@@ -50,17 +50,19 @@ public class Session {
     public void setEmployee(Employee employee) {
         this.employee = employee;
         if (employee != null) {
-            this.idEmployee = employee.getEmployeeId();
+            this.employeeId = employee.getEmployeeId();
         }
     }
 
-    public int getIdEmployee() {
-        return idEmployee;
+    public int getEmployeeId() {
+        return employeeId;
     }
 
-    public void setIdEmployee(int idEmployee) {
-        this.idEmployee = idEmployee;
+    public void setEmployeeId(int employeeId) {
+        this.employeeId = employeeId;
     }
+
+    
 
     public String getMessage() {
         return message;
@@ -72,8 +74,8 @@ public class Session {
 
     public static Session getFromResultSet(ResultSet rs) throws SQLException {
         Session s = new Session();
-        s.setId(rs.getInt("id"));
-        s.setIdEmployee(rs.getInt("idEmployee"));
+        s.setId(rs.getInt("employeeId"));
+        s.setEmployeeId(rs.getInt("employeeId"));
         s.setMessage(rs.getNString("message"));
         s.setStartTime(rs.getTimestamp("startTime"));
         s.setEndTime(rs.getTimestamp("endTime"));
@@ -82,7 +84,7 @@ public class Session {
 
     @Override
     public String toString() {
-        return "Session{" + "id=" + id + ", idEmployee=" + idEmployee + ", startTime=" + startTime + ", endTime=" + endTime + ", message=" + message + '}';
+        return "Session{" + "id=" + id + ", employeeId=" + employeeId + ", startTime=" + startTime + ", endTime=" + endTime + ", message=" + message + '}';
     }
 
 }

@@ -21,6 +21,7 @@ public class LoginController {
     private LoginView view;
     EmployeeDao employeeDao = new EmployeeDao();
 
+    
     public LoginController(LoginView view) {
         this.view = view;
         view.setVisible(true);
