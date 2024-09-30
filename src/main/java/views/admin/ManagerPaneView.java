@@ -50,7 +50,7 @@ public abstract class ManagerPaneView<T extends Model> extends javax.swing.JPane
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(717, Short.MAX_VALUE)
+                .addContainerGap(645, Short.MAX_VALUE)
                 .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 196, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(30, 30, 30)
                 .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -100,7 +100,7 @@ public abstract class ManagerPaneView<T extends Model> extends javax.swing.JPane
                 .addComponent(jButton3)
                 .addGap(18, 18, 18)
                 .addComponent(jButton4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(257, Short.MAX_VALUE))
         );
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
@@ -114,6 +114,9 @@ public abstract class ManagerPaneView<T extends Model> extends javax.swing.JPane
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setMinimumSize(new java.awt.Dimension(60, 120));
+        jTable1.setPreferredSize(new java.awt.Dimension(300, 120));
+        jTable1.setRowHeight(30);
         jScrollPane1.setViewportView(jTable1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
