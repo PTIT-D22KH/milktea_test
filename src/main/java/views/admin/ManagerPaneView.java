@@ -6,8 +6,10 @@ package views.admin;
 
 import javax.swing.JButton;
 import javax.swing.JComboBox;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import models.Model;
+import utils.ErrorPopup;
 
 /**
  *
@@ -62,7 +64,17 @@ public abstract class ManagerPaneView<T extends Model> extends javax.swing.JPane
         this.searchTxt = searchTxt;
     }
 
-    
+    public void showError(String message) {
+        ErrorPopup.show(new Exception(message));
+    }
+
+    public void showError(Exception e) {
+        ErrorPopup.show(e);
+    }
+
+    public void showMessage(String message) {
+        JOptionPane.showMessageDialog(null, message);
+    }
 
     public JButton getSyncButton() {
         return syncButton;

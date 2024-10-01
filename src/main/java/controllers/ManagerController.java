@@ -15,7 +15,7 @@ import views.admin.ManagerPaneView;
  * @author P51
  */
 public abstract class ManagerController {
-    private ManagerPaneView view = null;
+    protected ManagerPaneView view = null;
     
     public ManagerController() {
         
