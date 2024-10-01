@@ -1,13 +1,10 @@
 package utils;
 
-/**
- *
- * @author Tran Duc Cuong<clonebmn2itt@gmail.com>
- */
 public enum EmployeePermission {
-    MANAGER("manager", "Quản lý", 2),
+    MANAGER("manger", "Quản lý", 2),
     STAFF("staff", "Nhân viên", 1),
     INACTIVE("inactive", "Nghỉ việc", 0);
+
     private String id, name;
     private int priority;
 
@@ -43,8 +40,12 @@ public enum EmployeePermission {
         return name;
     }
 
+    public int getPriority() {
+        return priority;
+    }
+   
     public int compare(EmployeePermission other) {
-        return priority - other.priority;
+        return this.priority - other.priority;
     }
 
 }

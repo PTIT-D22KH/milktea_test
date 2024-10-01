@@ -1,3 +1,7 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package utils;
 
 import java.text.Normalizer;
@@ -6,11 +10,10 @@ import java.util.Locale;
 import java.util.regex.Pattern;
 
 /**
- * @createAt Dec 1, 2020
- * @author Tran Duc Cuong<clonebmn2itt@gmail.com>
+ *
+ * @author P51
  */
 public class StringToSlug {
-
     private static final Pattern NONLATIN = Pattern.compile("[^\\w-]");
     private static final Pattern WHITESPACE = Pattern.compile("[\\s_\\(]");
 

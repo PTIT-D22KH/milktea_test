@@ -1,9 +1,14 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package utils;
 
+import static utils.ShipmentStatus.values;
+
 /**
- * createAt Dec 15, 2020
  *
- * @author Đỗ Tuấn Anh <daclip26@gmail.com>
+ * @author DELL
  */
 public enum ShipmentStatus {
     TOPAY("topay", "Chờ xác nhận"),

@@ -83,7 +83,7 @@ public class SessionDao extends Dao<Session> {
         stmt.setTimestamp(1, t.getStartTime());
         stmt.setTimestamp(2, t.getEndTime());
         stmt.setNString(3, t.getMessage());
-        stmt.setInt(4, t.getId());
+        stmt.setInt(4, t.getSessionId());
         int row = stmt.executeUpdate();
     }
 

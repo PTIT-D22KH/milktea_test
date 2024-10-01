@@ -1,14 +1,21 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package utils;
+
+import static utils.TableStatus.values;
 
 /**
  *
- * @author Tran Duc Cuong<clonebmn2itt@gmail.com>
+ * @author DELL
  */
 public enum TableStatus {
     FREE("free", "Trống"),
     SERVING("serving", "Đang phục vụ"),
     RESERVING("reserving", "Đặt trước");
     private String id, name;
+    
 
     TableStatus(String id, String name) {
         this.id = id;

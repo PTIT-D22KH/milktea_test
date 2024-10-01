@@ -4,6 +4,7 @@ import dao.EmployeeDao;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import javax.swing.JOptionPane;
 import main.SessionManager;
 import models.Employee;
 import views.AdminDashboardView;
@@ -51,7 +52,8 @@ public class LoginController {
                 return;
             }
             SessionManager.create(employee);//Khởi tạo session
-
+            JOptionPane.showMessageDialog(null, "Dang nhap thanh cong");
+            
 //            switch (employee.getPermission()) {
 //                case MANAGER:
 //                    //Admin controller

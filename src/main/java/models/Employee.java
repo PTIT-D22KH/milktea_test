@@ -5,20 +5,15 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import utils.EmployeePermission;
 
-/**
- * @createAt Nov 24, 2020
- * @author Tran Duc Cuong<clonebmn2itt@gmail.com>
- */
 public class Employee extends Model {
-
-    protected int employeeId;
-    protected String username, password, name, phoneNumber;
-//    protected int permissionId;
-    protected EmployeePermission permission;
-    protected Date startDate;
-    protected int salary;
-
-    public Employee() {
+    
+    private int employeeId, salary;
+    private String username, password, name, phoneNumber;
+    private EmployeePermission permission;
+    private Date startDate;
+    
+    public Employee(){
+        
     }
 
     public int getEmployeeId() {
@@ -29,7 +24,13 @@ public class Employee extends Model {
         this.employeeId = employeeId;
     }
 
-    
+    public int getSalary() {
+        return salary;
+    }
+
+    public void setSalary(int salary) {
+        this.salary = Math.max(0, salary);
+    }
 
     public String getUsername() {
         return username;
@@ -63,14 +64,6 @@ public class Employee extends Model {
         this.phoneNumber = phoneNumber;
     }
 
-    public Date getStartDate() {
-        return startDate;
-    }
-
-    public void setStartDate(Date startDate) {
-        this.startDate = startDate;
-    }
-
     public EmployeePermission getPermission() {
         return permission;
     }
@@ -79,23 +72,22 @@ public class Employee extends Model {
         this.permission = permission;
     }
 
-    public int getSalary() {
-        return salary;
+    public Date getStartDate() {
+        return startDate;
     }
 
-    public void setSalary(int salary) {
-        this.salary = Math.max(0, salary);
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
     }
-
+    
     @Override
-    public String toString() {
-        return name + " " + startDate.toString();
+    public String toString(){
+        return "";
     }
-
     public boolean checkPassword(String password) {
         return this.password.equals(password);
     }
-
+    
     public static Employee getFromResultSet(ResultSet rs) throws SQLException {
         Employee e = new Employee();
         e.setEmployeeId(rs.getInt("employeeId"));
@@ -108,38 +100,4 @@ public class Employee extends Model {
         e.setSalary(rs.getInt("salary"));
         return e;
     }
-
-//    @Override
-//    public Object[] toRowTable() {
-//        return new Object[]{
-//            id, name, username, password,
-//            phoneNumber, startDate, permission.getName(),
-//            salary
-//        };
-//    }
-
-    @Override
-    public int hashCode() {
-        int hash = 5;
-        return hash;
-    }
-
-    @Override
-    public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
-        if (obj == null) {
-            return false;
-        }
-        if (getClass() != obj.getClass()) {
-            return false;
-        }
-        final Employee other = (Employee) obj;
-        if (this.employeeId != other.employeeId) {
-            return false;
-        }
-        return true;
-    }
-
 }

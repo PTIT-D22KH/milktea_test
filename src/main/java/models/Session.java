@@ -1,57 +1,46 @@
 package models;
 
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Timestamp;
+import java.sql.*;
 
-/**
- * createAt Dec 23, 2020
- *
- * @author Đỗ Tuấn Anh <daclip26@gmail.com>
- */
 public class Session {
-
-    private int id, employeeId;
+    private int sessionId, employeeId;
     private Timestamp startTime, endTime;
     private Employee employee;
     private String message;
-
+    
     public Session() {
     }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
+    
+    
     public Timestamp getStartTime() {
-        return startTime;
+        return this.startTime;
     }
 
     public Timestamp getEndTime() {
-        return endTime;
+        return this.endTime;
     }
-
     public Employee getEmployee() {
-        return employee;
+        return this.employee;
     }
-
-    public void setStartTime(Timestamp startTime) {
-        this.startTime = startTime;
+    public void setStartTime(Timestamp starttime) {
+        this.startTime = starttime;
     }
-
-    public void setEndTime(Timestamp endTime) {
-        this.endTime = endTime;
+    public void setEndTime(Timestamp endtime) {
+        this.endTime = endtime;
     }
-
     public void setEmployee(Employee employee) {
         this.employee = employee;
-        if (employee != null) {
+        if(employee != null) {
             this.employeeId = employee.getEmployeeId();
         }
+    }
+
+    public int getSessionId() {
+        return sessionId;
+    }
+
+    public void setSessionId(int sessionId) {
+        this.sessionId = sessionId;
     }
 
     public int getEmployeeId() {
@@ -59,32 +48,31 @@ public class Session {
     }
 
     public void setEmployeeId(int employeeId) {
+        
         this.employeeId = employeeId;
+        
     }
-
     
-
+    
     public String getMessage() {
-        return message;
+        return this.message;
     }
-
     public void setMessage(String message) {
         this.message = message;
+    }
+    @Override 
+    public String toString() {
+        return "Session{" + "id=" + sessionId + ", employeeId" + employeeId + ", startTime=" + startTime + ", endTime=" + endTime + ", message=" + message + "}";
     }
 
     public static Session getFromResultSet(ResultSet rs) throws SQLException {
         Session s = new Session();
-        s.setId(rs.getInt("employeeId"));
+        s.setSessionId(rs.getInt("sessionId"));
         s.setEmployeeId(rs.getInt("employeeId"));
         s.setMessage(rs.getNString("message"));
         s.setStartTime(rs.getTimestamp("startTime"));
         s.setEndTime(rs.getTimestamp("endTime"));
         return s;
-    }
-
-    @Override
-    public String toString() {
-        return "Session{" + "id=" + id + ", employeeId=" + employeeId + ", startTime=" + startTime + ", endTime=" + endTime + ", message=" + message + '}';
     }
 
 }

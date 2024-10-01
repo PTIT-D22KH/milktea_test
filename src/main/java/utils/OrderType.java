@@ -1,8 +1,14 @@
+/*
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+ * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
+ */
 package utils;
+
+import static utils.OrderType.values;
 
 /**
  *
- * @author Tran Duc Cuong<clonebmn2itt@gmail.com>
+ * @author DELL
  */
 public enum OrderType {
     LOCAL("local", "Tại quán"),
@@ -49,3 +55,4 @@ public enum OrderType {
     }
 
 }
+
