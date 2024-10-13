@@ -60,19 +60,22 @@ public class Session {
     public void setMessage(String message) {
         this.message = message;
     }
-    @Override 
-    public String toString() {
-        return "Session{" + "id=" + sessionId + ", employeeId" + employeeId + ", startTime=" + startTime + ", endTime=" + endTime + ", message=" + message + "}";
-    }
-
+    
     public static Session getFromResultSet(ResultSet rs) throws SQLException {
         Session s = new Session();
         s.setSessionId(rs.getInt("sessionId"));
-        s.setEmployeeId(rs.getInt("employeeId"));
+        s.setEmployeeId(rs.getInt("EmployeeId"));
         s.setMessage(rs.getNString("message"));
         s.setStartTime(rs.getTimestamp("startTime"));
         s.setEndTime(rs.getTimestamp("endTime"));
         return s;
     }
+    @Override 
+    public String toString() {
+        return "Session{" + "sessionId=" + sessionId + ", employeeId=" + employeeId + ", startTime=" + startTime + ", endTime=" + endTime + ", message=" + message + "}";
+    }
+    
+
+
 
 }

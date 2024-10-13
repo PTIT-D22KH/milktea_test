@@ -1,9 +1,9 @@
 package models;
 
 import java.sql.Date;
+import utils.EmployeePermission;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import utils.EmployeePermission;
 
 public class Employee extends Model {
     
@@ -80,14 +80,6 @@ public class Employee extends Model {
         this.startDate = startDate;
     }
     
-    @Override
-    public String toString(){
-        return "";
-    }
-    public boolean checkPassword(String password) {
-        return this.password.equals(password);
-    }
-    
     public static Employee getFromResultSet(ResultSet rs) throws SQLException {
         Employee e = new Employee();
         e.setEmployeeId(rs.getInt("employeeId"));
@@ -99,5 +91,24 @@ public class Employee extends Model {
         e.setPermission(EmployeePermission.getById(rs.getNString("permission")));
         e.setSalary(rs.getInt("salary"));
         return e;
+    }
+
+    @Override
+    public String toString() {
+        return "Employee{" + "employeeId=" + employeeId + ", salary=" + salary + ", username=" + username + ", password=" + password + ", name=" + name + ", phoneNumber=" + phoneNumber + ", permission=" + permission + ", startDate=" + startDate + '}';
+    }
+
+    @Override
+    public Object[] toRowTable() {
+        return new Object[]{
+            employeeId, name, username, password, phoneNumber,
+        startDate, permission.getName(), salary
+        };
+        
+//        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+    
+    public boolean checkPassword(String password) {
+        return this.password.equals(password);
     }
 }

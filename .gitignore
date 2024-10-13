@@ -27,3 +27,7 @@ replay_pid*
 config.properties
 /target/
 log.txt
+
+RunningTest.java
+
+test_folder/

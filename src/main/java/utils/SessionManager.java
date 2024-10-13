@@ -1,4 +1,4 @@
-package main;
+package utils;
 
 import dao.SessionDao;
 import java.sql.SQLException;
@@ -13,8 +13,8 @@ import models.Session;
  */
 public class SessionManager {
 
-    public static Session session;
-    static SessionDao sessionDao = new SessionDao();
+    private static Session session;
+    private static SessionDao sessionDao = new SessionDao();
 
     public SessionManager() {
     }

@@ -116,7 +116,17 @@ public class CustomerDao extends Dao<Customer>{
         statement.executeUpdate();
         
 //        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }   
+    
+    public ArrayList<Customer> searchByKey(String key, String word) throws SQLException {
+        ArrayList<Customer> customers = new ArrayList<>();
+        Statement statement = conn.createStatement();
+        String query = "SELECT * FROM `customer` WHERE " + key + " LIKE '%" + word + "%';";
+        ResultSet rs = statement.executeQuery(query);
+        while (rs.next()) {
+            Customer customer = Customer.getFromResultSet(rs);
+            customers.add(customer);
+        }
+        return customers;
     }
-    
-    
 }

@@ -1,5 +1,8 @@
 package dao;
 
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,110 +10,121 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import models.Employee;
 
-/**
- *
- * @author Tran Duc Cuong<clonebmn2itt@gmail.com>
- */
-public class EmployeeDao extends Dao<Employee> {
-
+public class EmployeeDao extends Dao<Employee>{
+    
+    public EmployeeDao(){
+        
+    }
+    
     @Override
     public ArrayList<Employee> getAll() throws SQLException {
         ArrayList<Employee> employees = new ArrayList<>();
         Statement statement = conn.createStatement();
         String query = "SELECT * FROM employee;";
         ResultSet rs = statement.executeQuery(query);
-        while (rs.next()) {
-            Employee employee = Employee.getFromResultSet(rs);
-            employees.add(employee);
+        while (rs.next()){
+            Employee e = Employee.getFromResultSet(rs);
+            employees.add(e);
         }
+        //exportEmployeesToFile(employees);   
         return employees;
     }
-
+    
     @Override
-    public Employee getById(int id) throws SQLException {
+    public Employee getById(int id) throws SQLException{
         Statement statement = conn.createStatement();
-        String query = "SELECT * FROM employee WHERE employee.employeeId = " + id;
+        String query = "SELECT * FROM employee WHERE employeeId = " + id;
         ResultSet rs = statement.executeQuery(query);
-        if (rs.next()) {
-            Employee employee = Employee.getFromResultSet(rs);
-            return employee;
+        if (rs.next()){
+            Employee e = Employee.getFromResultSet(rs);
+            return e;
         }
         return null;
     }
-
+    
     @Override
-    public void save(Employee t) throws SQLException {
-        if (t == null) {
-            throw new SQLException("Employee rỗng");
+    public void save(Employee t) throws SQLException{
+        if (t == null){
+            throw new SQLException("Cannot insert into table null object(employee)");
         }
         String query = "INSERT INTO `employee` (`username`, `password`, `name`, `phoneNumber`, `startDate`, `permission`, `salary`)"
                 + " VALUES (?, ?, ?, ?, current_timestamp(), ?, ?)";
-
-        PreparedStatement stmt = conn.prepareStatement(query);
-//            stmt.setLong(0, t.getId());
-        stmt.setNString(1, t.getUsername());
-        stmt.setNString(2, t.getPassword());
-        stmt.setNString(3, t.getName());
-        stmt.setNString(4, t.getPhoneNumber());
-        stmt.setNString(5, t.getPermission().getId());
-        stmt.setInt(6, t.getSalary());
-        int row = stmt.executeUpdate();
+        
+        PreparedStatement prStatement = conn.prepareStatement(query);
+        prStatement.setNString(1, t.getUsername());
+        prStatement.setNString(2, t.getPassword());
+        prStatement.setNString(3, t.getName());
+        prStatement.setNString(4, t.getPhoneNumber());
+        prStatement.setNString(5, t.getPermission().getId());
+        prStatement.setInt(6, t.getSalary());
+        
+        int row = prStatement.executeUpdate();
     }
-
+    
     @Override
-    public void update(Employee t) throws SQLException {
+    public void update(Employee t) throws SQLException{
         if (t == null) {
-            throw new SQLException("Employee rong");
+            throw new SQLException("Cannot update employee table when employee instance is null");
         }
         String query = "UPDATE `employee` SET `username` = ?, `password` = ?, `name` = ?, `phoneNumber` = ?, `permission` = ?, `salary` = ? WHERE `employeeId` = ?";
-        PreparedStatement stmt = conn.prepareStatement(query);
-        stmt.setNString(1, t.getUsername());
-        stmt.setNString(2, t.getPassword());
-        stmt.setNString(3, t.getName());
-        stmt.setNString(4, t.getPhoneNumber());
-        stmt.setNString(5, t.getPermission().getId());
-        stmt.setInt(6, t.getSalary());
-        stmt.setInt(7, t.getEmployeeId());
-        stmt.executeUpdate();
+        PreparedStatement prStatement = conn.prepareStatement(query);
+        prStatement.setNString(1, t.getUsername());
+        prStatement.setNString(2, t.getPassword());
+        prStatement.setNString(3, t.getName());
+        prStatement.setNString(4, t.getPhoneNumber());
+        prStatement.setNString(5, t.getPermission().getId());
+        prStatement.setInt(6, t.getSalary());
+        prStatement.setInt(7, t.getEmployeeId());
+        
+        int row = prStatement.executeUpdate();
     }
-
+    
     @Override
-    public void delete(Employee t) throws SQLException {
-        PreparedStatement stmt = conn.prepareStatement("DELETE FROM `employee` WHERE `employee`.`employeeId` = ?");
-        stmt.setInt(1, t.getEmployeeId());
-        stmt.executeUpdate();
+    public void delete(Employee t) throws SQLException{
+        String query = "DELETE " 
+                + "FROM `employee`"
+                + "WHERE `employeeId` = ?";
+        PreparedStatement prStatement = conn.prepareStatement(query);
+        prStatement.setInt(1, t.getEmployeeId());
+        prStatement.executeUpdate();
     }
-
+    
     @Override
-    public void deleteById(int id) throws SQLException {
-        PreparedStatement stmt = conn.prepareStatement("DELETE FROM `employee` WHERE `employee`.`employeeId` = ?");
-        stmt.setInt(1, id);
-        stmt.executeUpdate();
+    public void deleteById(int id) throws SQLException{
+        String query = "DELETE " 
+                + "FROM `employee`"
+                + "WHERE `employeeId` = ?";
+        PreparedStatement prStatement = conn.prepareStatement(query);
+        prStatement.setInt(1, id);
+        prStatement.executeUpdate();
     }
-
-    public Employee findByUsername(String userName) throws SQLException {
+    
+    public Employee findByUsername(String username) throws SQLException{
         Statement statement = conn.createStatement();
-        String query = "SELECT * FROM employee WHERE employee.username = '" + userName + "'";
+        String query = "SELECT * FROM `employee` "
+                + "WHERE `username` = '" + username + "'";
         ResultSet rs = statement.executeQuery(query);
-        if (rs.next()) {
-            Employee employee = Employee.getFromResultSet(rs);
-            return employee;
+        if (rs.next()){
+            Employee e = Employee.getFromResultSet(rs);
+            return e;
         }
         return null;
     }
-
-    public ArrayList<Employee> searchByKey(String key, String word) throws SQLException {
+    
+    public ArrayList<Employee> searchByKey(String key, String word) throws SQLException{
         ArrayList<Employee> employees = new ArrayList<>();
         Statement statement = conn.createStatement();
-        String query = "SELECT * FROM `employee` WHERE " + key + " LIKE '%" + word + "%';";
+        String query = "SELECT * FROM `employee` "
+                + "WHERE " + key + " LIKE '%" + word + "%';";
         ResultSet rs = statement.executeQuery(query);
-        while (rs.next()) {
-            Employee employee = Employee.getFromResultSet(rs);
-            employees.add(employee);
+        while (rs.next()){
+            Employee e = Employee.getFromResultSet(rs);
+            employees.add(e);
         }
+        
         return employees;
     }
-
+    
     public Employee getRandom() throws SQLException {
         Statement statement = conn.createStatement();
         String query = "SELECT * FROM employee ORDER BY RAND() LIMIT 1";
@@ -121,4 +135,24 @@ public class EmployeeDao extends Dao<Employee> {
         }
         return null;
     }
+    
+    public void exportEmployeesToFile(ArrayList<Employee> employees)
+            throws IOException{
+        FileWriter fileWriter = null;
+        PrintWriter printWriter = null;
+        try {
+            fileWriter = new FileWriter("D:/employees.txt");
+            printWriter = new PrintWriter(fileWriter);
+            for (Employee e : employees) {
+                printWriter.println(e.toString());
+            }
+        } finally {
+            if (printWriter != null) {
+                printWriter.close();
+            }
+            if (fileWriter != null) {
+                fileWriter.close();
+            }
+        }
+    }   
 }
