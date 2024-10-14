@@ -4,8 +4,10 @@
  */
 package views.popup;
 
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
+import models.Table;
 
 /**
  *
@@ -16,6 +18,7 @@ public class EditOrderPopupView extends javax.swing.JFrame implements PopupView{
     /**
      * Creates new form EditOrderPopupView
      */
+    DefaultComboBoxModel<Table> tbComboBoxModel = new DefaultComboBoxModel<>();
     public EditOrderPopupView() {
         initComponents();
     }
@@ -50,16 +53,16 @@ public class EditOrderPopupView extends javax.swing.JFrame implements PopupView{
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jLabel15 = new javax.swing.JLabel();
-        jLabel16 = new javax.swing.JLabel();
+        lbStatus = new javax.swing.JLabel();
+        lbTotalAmount = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
-        jLabel18 = new javax.swing.JLabel();
+        lbDiscount = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jLabel20 = new javax.swing.JLabel();
+        lbFinalAmount = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
+        lbPaidAmount = new javax.swing.JLabel();
         jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
+        rebateAmountLabel = new javax.swing.JLabel();
         jLabel25 = new javax.swing.JLabel();
         jPanel5 = new javax.swing.JPanel();
         jButton1 = new javax.swing.JButton();
@@ -185,41 +188,41 @@ public class EditOrderPopupView extends javax.swing.JFrame implements PopupView{
 
         jLabel14.setText("Tiền thừa:");
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel15.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel15.setText("Chưa thanh toán");
+        lbStatus.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbStatus.setForeground(new java.awt.Color(255, 0, 51));
+        lbStatus.setText("Chưa thanh toán");
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel16.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel16.setText("100,000");
+        lbTotalAmount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbTotalAmount.setForeground(new java.awt.Color(255, 0, 51));
+        lbTotalAmount.setText("100,000");
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel17.setText("VNĐ");
 
-        jLabel18.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel18.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel18.setText("0");
+        lbDiscount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbDiscount.setForeground(new java.awt.Color(255, 0, 51));
+        lbDiscount.setText("0");
 
         jLabel19.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel19.setText("%");
 
-        jLabel20.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel20.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel20.setText("100,000");
+        lbFinalAmount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbFinalAmount.setForeground(new java.awt.Color(255, 0, 51));
+        lbFinalAmount.setText("100,000");
 
         jLabel21.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel21.setText("VNĐ");
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel22.setText("100,000");
+        lbPaidAmount.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        lbPaidAmount.setForeground(new java.awt.Color(255, 0, 51));
+        lbPaidAmount.setText("100,000");
 
         jLabel23.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel23.setText("VNĐ");
 
-        jLabel24.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(255, 0, 51));
-        jLabel24.setText("100,000");
+        rebateAmountLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
+        rebateAmountLabel.setForeground(new java.awt.Color(255, 0, 51));
+        rebateAmountLabel.setText("100,000");
 
         jLabel25.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         jLabel25.setText("VNĐ");
@@ -246,18 +249,18 @@ public class EditOrderPopupView extends javax.swing.JFrame implements PopupView{
                         .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGap(106, 106, 106)
-                                .addComponent(jLabel18)
+                                .addComponent(lbDiscount)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jLabel19, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel4Layout.createSequentialGroup()
-                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(lbTotalAmount, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel17))
                             .addGroup(jPanel4Layout.createSequentialGroup()
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
-                                    .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jLabel20, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                    .addComponent(rebateAmountLabel, javax.swing.GroupLayout.DEFAULT_SIZE, 101, Short.MAX_VALUE)
+                                    .addComponent(lbPaidAmount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(lbFinalAmount, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel25, javax.swing.GroupLayout.PREFERRED_SIZE, 26, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -265,7 +268,7 @@ public class EditOrderPopupView extends javax.swing.JFrame implements PopupView{
                                     .addComponent(jLabel21)))))
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addGap(4, 4, 4)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(lbStatus, javax.swing.GroupLayout.PREFERRED_SIZE, 129, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel4Layout.setVerticalGroup(
@@ -274,31 +277,31 @@ public class EditOrderPopupView extends javax.swing.JFrame implements PopupView{
                 .addGap(14, 14, 14)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jLabel15))
+                    .addComponent(lbStatus))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(jLabel16)
+                    .addComponent(lbTotalAmount)
                     .addComponent(jLabel17))
                 .addGap(12, 12, 12)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel11)
-                    .addComponent(jLabel18)
+                    .addComponent(lbDiscount)
                     .addComponent(jLabel19))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(jLabel20)
+                    .addComponent(lbFinalAmount)
                     .addComponent(jLabel21))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(jLabel22)
+                    .addComponent(lbPaidAmount)
                     .addComponent(jLabel23))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(jLabel24)
+                    .addComponent(rebateAmountLabel)
                     .addComponent(jLabel25))
                 .addContainerGap(7, Short.MAX_VALUE))
         );
@@ -614,6 +617,35 @@ public class EditOrderPopupView extends javax.swing.JFrame implements PopupView{
 //        });
 //    }
 
+    public DefaultComboBoxModel<Table> getTbComboBoxModel() {
+        return tbComboBoxModel;
+    }
+
+    public JLabel getLbDiscount() {
+        return lbDiscount;
+    }
+
+    public JLabel getLbFinalAmount() {
+        return lbFinalAmount;
+    }
+
+    public JLabel getLbPaidAmount() {
+        return lbPaidAmount;
+    }
+
+    public JLabel getLbStatus() {
+        return lbStatus;
+    }
+    public JLabel getLbTotalAmount() {
+        return lbTotalAmount;
+    }
+
+    public JLabel getRebateAmountLabel() {
+        return rebateAmountLabel;
+    }
+    
+    
+    
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancel;
     private javax.swing.JButton btnOK;
@@ -628,17 +660,11 @@ public class EditOrderPopupView extends javax.swing.JFrame implements PopupView{
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
-    private javax.swing.JLabel jLabel15;
-    private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
-    private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
     private javax.swing.JLabel jLabel25;
     private javax.swing.JLabel jLabel26;
     private javax.swing.JLabel jLabel27;
@@ -666,7 +692,13 @@ public class EditOrderPopupView extends javax.swing.JFrame implements PopupView{
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSpinner jSpinner1;
+    private javax.swing.JLabel lbDiscount;
+    private javax.swing.JLabel lbFinalAmount;
+    private javax.swing.JLabel lbPaidAmount;
+    private javax.swing.JLabel lbStatus;
     private javax.swing.JLabel lbTitle;
+    private javax.swing.JLabel lbTotalAmount;
+    private javax.swing.JLabel rebateAmountLabel;
     // End of variables declaration//GEN-END:variables
 
     @Override
